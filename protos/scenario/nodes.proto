@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package scenario;
+
+option go_package = "go/scenario";
+
+// Message Node
+message MessageNode {
+  int32 id = 1;
+  string title = 2;
+  string text = 3; 
+}
+
+// HTML Node
+message HTMLNode {
+  int32 id = 1;
+}
