@@ -18,7 +18,6 @@
 ```shell
 make                # generate all
 make gen-go         # generate go code based on proto
-make gen-py         # generate python code based on proto
 make gen-ts         # generate typescript code based on proto
 ```
 
@@ -95,20 +94,6 @@ go get github.com/BlaxBerry/myapp_protobuf/go/scenario
 
 ```go
 import "github.com/BlaxBerry/myapp_protobuf/go/scenario"
-```
-
-### Python
-
-1. install pkg
-
-```shell
-pip install git+https://github.com/BlaxBerry/myapp_protobuf.git
-```
-
-2. import module
-
-```py
-from scenario.nodes_pb2 import MessageNode
 ```
 
 ### TypeScript
