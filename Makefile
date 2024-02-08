@@ -10,12 +10,12 @@ make:
 	
 gen-go:
 	protoc -I=$(PROTO_SRC_DIR) \
-	--go_out=$(DST_DIR_GO) $(PROTO_SRC_DIR)/**/*.proto
+	--go_out=$(DST_DIR_GO) $(PROTO_SRC_DIR)/*.proto
 	
 gen-ts:
 	protoc -I=$(PROTO_SRC_DIR) \
 	--plugin="protoc-gen-ts=node_modules/.bin/protoc-gen-ts" \
-	--ts_out=$(DST_DIR_TS) $(PROTO_SRC_DIR)/**/*.proto
+	--ts_out=$(DST_DIR_TS) $(PROTO_SRC_DIR)/*.proto
 
 # gen-py:
 # 	protoc -I=$(PROTO_SRC_DIR) \

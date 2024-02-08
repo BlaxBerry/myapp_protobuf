@@ -1,8 +1,5 @@
 # MyApp ProtoBuf
 
-- [proto 3](https://protobuf.dev/programming-guides/proto3/)
-- [Makefile]()
-
 ## Repo Links
 
 |                                 Repo                                  | Desc                            |                 Domain                  | Port |
@@ -17,8 +14,8 @@
 
 ```shell
 make                # generate all
-make gen-go         # generate go code based on proto
-make gen-ts         # generate typescript code based on proto
+make gen-go         # only generate go code based on proto
+make gen-ts         # only generate typescript code based on proto
 ```
 
 ## Setup
@@ -106,9 +103,18 @@ yarn add git+https://github.com/BlaxBerry/myapp_protobuf.git
 
 2. import type
 
-```ts
-import { scenario } from "myapp_protobuf/ts/scenario/nodes";
+```tsx
+import { scenario } from "myapp_protobuf/ts/scenario";
 
-const messageNode: scenario.MessageNode;
-const htmlNode: scenario.HTMLNode;
+const messageNode = new scenario.MessageNode({
+  [key]: value,
+  [key]: value,
+});
+
+const htmlNode = new scenario.HTMLNode({
+  [key]: value,
+  [key]: value,
+});
+
+console.log(messageNode.[key], htmlNode.[key])
 ```

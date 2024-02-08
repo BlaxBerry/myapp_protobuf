@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.32.0
 // 	protoc        v4.25.2
-// source: scenario/nodes.proto
+// source: scenario.proto
 
 package scenario
 
@@ -34,7 +34,7 @@ type MessageNode struct {
 func (x *MessageNode) Reset() {
 	*x = MessageNode{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_scenario_nodes_proto_msgTypes[0]
+		mi := &file_scenario_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +47,7 @@ func (x *MessageNode) String() string {
 func (*MessageNode) ProtoMessage() {}
 
 func (x *MessageNode) ProtoReflect() protoreflect.Message {
-	mi := &file_scenario_nodes_proto_msgTypes[0]
+	mi := &file_scenario_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *MessageNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageNode.ProtoReflect.Descriptor instead.
 func (*MessageNode) Descriptor() ([]byte, []int) {
-	return file_scenario_nodes_proto_rawDescGZIP(), []int{0}
+	return file_scenario_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *MessageNode) GetId() int32 {
@@ -90,13 +90,15 @@ type HTMLNode struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id    int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Text  string `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
 }
 
 func (x *HTMLNode) Reset() {
 	*x = HTMLNode{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_scenario_nodes_proto_msgTypes[1]
+		mi := &file_scenario_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -109,7 +111,7 @@ func (x *HTMLNode) String() string {
 func (*HTMLNode) ProtoMessage() {}
 
 func (x *HTMLNode) ProtoReflect() protoreflect.Message {
-	mi := &file_scenario_nodes_proto_msgTypes[1]
+	mi := &file_scenario_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -122,7 +124,7 @@ func (x *HTMLNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTMLNode.ProtoReflect.Descriptor instead.
 func (*HTMLNode) Descriptor() ([]byte, []int) {
-	return file_scenario_nodes_proto_rawDescGZIP(), []int{1}
+	return file_scenario_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *HTMLNode) GetId() int32 {
@@ -132,39 +134,55 @@ func (x *HTMLNode) GetId() int32 {
 	return 0
 }
 
-var File_scenario_nodes_proto protoreflect.FileDescriptor
+func (x *HTMLNode) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
 
-var file_scenario_nodes_proto_rawDesc = []byte{
-	0x0a, 0x14, 0x73, 0x63, 0x65, 0x6e, 0x61, 0x72, 0x69, 0x6f, 0x2f, 0x6e, 0x6f, 0x64, 0x65, 0x73,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x73, 0x63, 0x65, 0x6e, 0x61, 0x72, 0x69, 0x6f,
-	0x22, 0x47, 0x0a, 0x0b, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x12,
+func (x *HTMLNode) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+var File_scenario_proto protoreflect.FileDescriptor
+
+var file_scenario_proto_rawDesc = []byte{
+	0x0a, 0x0e, 0x73, 0x63, 0x65, 0x6e, 0x61, 0x72, 0x69, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x12, 0x08, 0x73, 0x63, 0x65, 0x6e, 0x61, 0x72, 0x69, 0x6f, 0x22, 0x47, 0x0a, 0x0b, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74,
+	0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12,
+	0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74,
+	0x65, 0x78, 0x74, 0x22, 0x44, 0x0a, 0x08, 0x48, 0x54, 0x4d, 0x4c, 0x4e, 0x6f, 0x64, 0x65, 0x12,
 	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12,
 	0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
 	0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x22, 0x1a, 0x0a, 0x08, 0x48, 0x54, 0x4d,
-	0x4c, 0x4e, 0x6f, 0x64, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x02, 0x69, 0x64, 0x42, 0x0d, 0x5a, 0x0b, 0x67, 0x6f, 0x2f, 0x73, 0x63, 0x65, 0x6e,
-	0x61, 0x72, 0x69, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x42, 0x0d, 0x5a, 0x0b, 0x67, 0x6f, 0x2f,
+	0x73, 0x63, 0x65, 0x6e, 0x61, 0x72, 0x69, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_scenario_nodes_proto_rawDescOnce sync.Once
-	file_scenario_nodes_proto_rawDescData = file_scenario_nodes_proto_rawDesc
+	file_scenario_proto_rawDescOnce sync.Once
+	file_scenario_proto_rawDescData = file_scenario_proto_rawDesc
 )
 
-func file_scenario_nodes_proto_rawDescGZIP() []byte {
-	file_scenario_nodes_proto_rawDescOnce.Do(func() {
-		file_scenario_nodes_proto_rawDescData = protoimpl.X.CompressGZIP(file_scenario_nodes_proto_rawDescData)
+func file_scenario_proto_rawDescGZIP() []byte {
+	file_scenario_proto_rawDescOnce.Do(func() {
+		file_scenario_proto_rawDescData = protoimpl.X.CompressGZIP(file_scenario_proto_rawDescData)
 	})
-	return file_scenario_nodes_proto_rawDescData
+	return file_scenario_proto_rawDescData
 }
 
-var file_scenario_nodes_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_scenario_nodes_proto_goTypes = []interface{}{
+var file_scenario_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_scenario_proto_goTypes = []interface{}{
 	(*MessageNode)(nil), // 0: scenario.MessageNode
 	(*HTMLNode)(nil),    // 1: scenario.HTMLNode
 }
-var file_scenario_nodes_proto_depIdxs = []int32{
+var file_scenario_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -172,13 +190,13 @@ var file_scenario_nodes_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_scenario_nodes_proto_init() }
-func file_scenario_nodes_proto_init() {
-	if File_scenario_nodes_proto != nil {
+func init() { file_scenario_proto_init() }
+func file_scenario_proto_init() {
+	if File_scenario_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_scenario_nodes_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_scenario_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MessageNode); i {
 			case 0:
 				return &v.state
@@ -190,7 +208,7 @@ func file_scenario_nodes_proto_init() {
 				return nil
 			}
 		}
-		file_scenario_nodes_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_scenario_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HTMLNode); i {
 			case 0:
 				return &v.state
@@ -207,18 +225,18 @@ func file_scenario_nodes_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_scenario_nodes_proto_rawDesc,
+			RawDescriptor: file_scenario_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_scenario_nodes_proto_goTypes,
-		DependencyIndexes: file_scenario_nodes_proto_depIdxs,
-		MessageInfos:      file_scenario_nodes_proto_msgTypes,
+		GoTypes:           file_scenario_proto_goTypes,
+		DependencyIndexes: file_scenario_proto_depIdxs,
+		MessageInfos:      file_scenario_proto_msgTypes,
 	}.Build()
-	File_scenario_nodes_proto = out.File
-	file_scenario_nodes_proto_rawDesc = nil
-	file_scenario_nodes_proto_goTypes = nil
-	file_scenario_nodes_proto_depIdxs = nil
+	File_scenario_proto = out.File
+	file_scenario_proto_rawDesc = nil
+	file_scenario_proto_goTypes = nil
+	file_scenario_proto_depIdxs = nil
 }
