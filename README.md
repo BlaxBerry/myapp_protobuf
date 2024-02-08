@@ -84,13 +84,35 @@ npm install
 1. get pkg
 
 ```shell
-go get github.com/BlaxBerry/myapp_protobuf/go/scenario
+go get github.com/BlaxBerry/myapp_protobuf/go/scenario@main
 ```
 
-2. import pkg
+2. import pkg then use
 
 ```go
-import "github.com/BlaxBerry/myapp_protobuf/go/scenario"
+import (
+    "fmt"
+
+    scenario "github.com/BlaxBerry/myapp_protobuf/go/scenario"
+)
+
+var MockMessageNode = &scenario.MessageNode{
+	Id:    11,
+	Title: "xxx",
+	Text:  "yyy",
+}
+
+var MockHTMLNode = &scenario.HTMLNode{
+	Id:    22,
+	Title: "xxx",
+	Text:  "yyy",
+}
+
+func main() {
+    fmt.Println(MockMessageNode.Id)
+    fmt.Println(MockMessageNode.Title)
+    fmt.Println(MockMessageNode.Text)
+}
 ```
 
 ### TypeScript
@@ -101,20 +123,25 @@ import "github.com/BlaxBerry/myapp_protobuf/go/scenario"
 yarn add git+https://github.com/BlaxBerry/myapp_protobuf.git
 ```
 
-2. import type
+2. import type then use
 
-```tsx
+```ts
 import { scenario } from "myapp_protobuf/ts/scenario";
 
-const messageNode = new scenario.MessageNode({
-  [key]: value,
-  [key]: value,
+const mockDataInstance = new scenario.MessageNode({
+  id: 123,
+  title: "xxx",
+  text: "yyy",
 });
 
-const htmlNode = new scenario.HTMLNode({
-  [key]: value,
-  [key]: value,
+console.log({
+  id: mockDataInstance.id,
+  title: mockDataInstance.title,
+  text: mockDataInstance.text,
 });
+// { id: 123, title: 'xxx', text: 'yyy'}
 
-console.log(messageNode.[key], htmlNode.[key])
+const mockData = mockDataInstance.toObject();
+console.log(mockData);
+// { id: 123, title: 'xxx', text: 'yyy'}
 ```
