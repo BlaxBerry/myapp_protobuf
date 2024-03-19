@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package notes;
+
+option go_package = "go/chat";

@@ -1,21 +1,24 @@
 # MyApp ProtoBuf
 
+MyApps' Protocol Buffers & Type Code Generator
+
 ## Repo Links
 
 |                                 Repo                                  | Desc                            |                 Domain                  | Port |
 | :-------------------------------------------------------------------: | ------------------------------- | :-------------------------------------: | :--: |
-|        [myapp_admin](https://github.com/BlaxBerry/myapp_admin)        | Admin Dashboard Pages           |     https://myapp-bff.onrender.com      | 3000 |
+|        [myapp_admin](https://github.com/BlaxBerry/myapp_admin)        | Admin Dashboard Pages           |     https://myapp-admin.vercel.app      | 3000 |
 |     [myapp_protobuf](https://github.com/BlaxBerry/myapp_protobuf)     | Protocol Buffers Code Generator |                    -                    |  -   |
-|          [myapp_bff](https://github.com/BlaxBerry/myapp_bff)          | Backend for Frontend            |     https://myapp-bff.onrender.com      | 8080 |
+|          [myapp_bff](https://github.com/BlaxBerry/myapp_bff)          | Backend for Frontend            |      https://myapp-bff.vercel.app       | 8080 |
 | [myapp_scenario_api](https://github.com/BlaxBerry/myapp_scenario_api) | Scenario App's API Server       | https://myapp-scenario-api.onrender.com | 8000 |
 |    [myapp_notes_api](https://github.com/BlaxBerry/myapp_notes_api)    | Notes App's API Server          |  https://myapp_notes_api.onrender.com   | 8400 |
 
 ## Commands
 
 ```shell
-make                # generate all
-make gen-go         # only generate go code based on proto
-make gen-ts         # only generate typescript code based on proto
+make                    # generate all
+
+make gen-go             # only generate go code based on proto
+make gen-ts-onlytypes   # only generate typescript code based on proto
 ```
 
 ## Setup
@@ -68,7 +71,7 @@ protoc-gen-go --version
 
 <details>
     <summary>
-        3. install pkg <code>protoc-gen-ts</code> for generating Typescript code
+        3. install pkg <code>ts-proto</code> for generating Typescript code
     </summary>
 
 ```shell
@@ -77,17 +80,53 @@ npm install
 
 </details>
 
-## Using
+## Usage
+
+### TypeScript
+
+<details>
+    <summary>
+        1. install pkg inside project
+    </summary>
+
+```shell
+cd <project>
+yarn add git+https://github.com/BlaxBerry/myapp_protobuf.git
+yarn add -D google-protobuf @types/google-protobuf
+```
+
+</details>
+
+<details>
+    <summary>
+        2. import type then use
+    </summary>
+
+```tsx
+import type { MessageNode, HTMLNode } from "myapp_protobuf/ts/scenario";
+import type { ChatBotVariable } from "myapp_protobuf/ts/chat";
+import type { NoteGroup } from "myapp_protobuf/ts/notes";
+```
+
+</details>
 
 ### Golang
 
-1. get pkg
+<details>
+    <summary>
+       1. get pkg
+    </summary>
 
 ```shell
 go get github.com/BlaxBerry/myapp_protobuf/go/scenario@main
 ```
 
-2. import pkg then use
+</details>
+
+<details>
+    <summary>
+       2. import pkg then use
+    </summary>
 
 ```go
 import (
@@ -115,33 +154,4 @@ func main() {
 }
 ```
 
-### TypeScript
-
-1. install pkg
-
-```shell
-yarn add git+https://github.com/BlaxBerry/myapp_protobuf.git
-```
-
-2. import type then use
-
-```ts
-import { scenario } from "myapp_protobuf/ts/scenario";
-
-const mockDataInstance = new scenario.MessageNode({
-  id: 123,
-  title: "xxx",
-  text: "yyy",
-});
-
-console.log({
-  id: mockDataInstance.id,
-  title: mockDataInstance.title,
-  text: mockDataInstance.text,
-});
-// { id: 123, title: 'xxx', text: 'yyy'}
-
-const mockData = mockDataInstance.toObject();
-console.log(mockData);
-// { id: 123, title: 'xxx', text: 'yyy'}
-```
+</details>
